@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+<h2>Students</h2>
+<a href="/students/new">Add Student</a>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="student, iterStat : ${studentList}">
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.age}"></td>
+        <td>
+            <a th:href="@{'/students/edit/' + ${iterStat.index}}">Edit</a>
+            <a th:href="@{'/students/delete/' + ${iterStat.index}}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

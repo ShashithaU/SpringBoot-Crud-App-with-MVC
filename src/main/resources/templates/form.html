@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+</head>
+<body>
+<h2 th:text="${#strings.isEmpty(index) ? 'Add Student' : 'Edit Student'}"></h2>
+<form th:action="@{${#strings.isEmpty(index) ? '/students' : '/students/update/' + index}}" th:object="${student}" method="post">
+    <label>Name: <input type="text" th:field="*{name}" required/></label><br>
+    <label>Age: <input type="number" th:field="*{age}" required/></label><br>
+    <button type="submit">Submit</button>
+</form>
+<a href="/students">Back to list</a>
+</body>
+</html>
